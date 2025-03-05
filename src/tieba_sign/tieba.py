@@ -5,7 +5,7 @@ from typing import Any
 
 import httpx
 
-from .config import Config
+from tieba_sign.config import Config
 
 __all__ = ["Tieba", "Forum"]
 

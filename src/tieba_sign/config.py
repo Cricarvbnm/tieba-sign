@@ -2,7 +2,7 @@ import tomllib
 from pathlib import Path
 from typing import Any
 
-from .paths import get_config_dir
+from tieba_sign.paths import get_config_dir
 
 __all__ = ["Config"]
 
