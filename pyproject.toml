@@ -1,6 +1,6 @@
 [project]
 name = "tieba-sign"
-version = "0.2.0"
+version = "0.3.0"
 description = "签到你的所有关注贴吧"
 readme = "README.md"
 authors = [
@@ -17,3 +17,8 @@ tieba-sign = "tieba_sign:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "viztracer>=1.0.3",
+]

@@ -44,7 +44,10 @@ async def _main():
             async with semaphore:
                 await forum.sign()
         except Exception as e:
-            return SignErrorInfo(forum.name, type(e).__name__, str(e))
+            sign_error = SignErrorInfo(forum.name, type(e).__name__, str(e))
+            logging.error(f"签到失败: {sign_error.name}")
+            logging.error(f"{sign_error.exception_type}: {sign_error.exception_message}")
+            return sign_error
 
     # result
     sign_results = asyncio.gather(*[sign(forum) for forum in forums])
@@ -55,10 +58,6 @@ async def _main():
         return
 
     # error logging
-    for sign_error in sign_errors:
-        logging.error(f"签到失败: {sign_error.name}")
-        logging.error(f"{sign_error.exception_type}: {sign_error.exception_message}")
-
     logging.info(f"签到失败: {len(sign_errors)}/{forums_not_signed_count}")
 
 def main():
